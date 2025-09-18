@@ -25,7 +25,7 @@ async function seedUsers() {
       `;
     }),
   );
-
+  console.log('Inserted users:', insertedUsers);
   return insertedUsers;
 }
 
@@ -51,7 +51,7 @@ async function seedInvoices() {
       `,
     ),
   );
-
+  console.log('Inserted invoices:', insertedInvoices);
   return insertedInvoices;
 }
 
@@ -76,7 +76,7 @@ async function seedCustomers() {
       `,
     ),
   );
-
+  console.log('Inserted customers:', insertedCustomers);
   return insertedCustomers;
 }
 
@@ -97,12 +97,13 @@ async function seedRevenue() {
       `,
     ),
   );
-
+  console.log('Inserted revenue:', insertedRevenue);
   return insertedRevenue;
 }
 
 export async function GET() {
   try {
+    await sql`SET statement_timeout = 0`;
     const result = await sql.begin((sql) => [
       seedUsers(),
       seedCustomers(),
