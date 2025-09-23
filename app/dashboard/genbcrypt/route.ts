@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import type { NextRequest } from 'next/server'
 
 
-export async function generateHashedPassword(
+async function generateHashedPassword(
   plainTextPassword: string
 ): Promise<string> {
   const saltRounds = 10;
